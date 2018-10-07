@@ -16,8 +16,7 @@ class App extends Component {
     let pokemonData = [];
     for(let i = 0; i < 25; i++ ){
       this.askForPokemons(i,pokemonData);
-    }
-    
+    }   
   }
 
   askForPokemons (i,pokemonData) {
@@ -32,17 +31,20 @@ class App extends Component {
     .then((json) => {
       console.log('json',json);
       pokemonData.push(json);
+      // this.reorderPokemons(pokemonData);
+      pokemonData.sort((a,b) => a.id-b.id);
+      console.log('pokedata', pokemonData);
       return this.setState({data: [...pokemonData]});
     })
   }
 
-
   render() {
     console.log('state', this.state);
+    const{data} = this.state;
     return (
       <div>
         <SearchBox/>
-        <PokemonList/>
+        <PokemonList data={data}/>
       </div>
     );
   }
