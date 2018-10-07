@@ -6,14 +6,13 @@ class PokemonList extends Component {
     const {data} = this.props;
     console.log('props pokemonList',data);
     return (
-      <div className="pokemonList">
-        Holla
-        <ul>
+      <div className="pokemon-wrapper">
+        <ul className="pokemon-list">
           {
             data.map(pokemonInfo =>{
               console.log('pokeinfo',pokemonInfo);
               return (
-                <li key = {pokemonInfo.id}>
+                <li key = {pokemonInfo.id} className="pokemon-item-list">
                   <PokemonCard pokemonInfo = {pokemonInfo} />
                 </li>
               );

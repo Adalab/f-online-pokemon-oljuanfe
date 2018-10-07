@@ -1,4 +1,5 @@
 @import 'stylesheets/basics.css';
+@import 'stylesheets/App.css';
 body {
   margin: 0;
   padding: 0;

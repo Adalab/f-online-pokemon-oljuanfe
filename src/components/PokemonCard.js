@@ -11,18 +11,18 @@ class PokemonCard extends Component {
       sprites
     } = pokemonInfo;
     return (
-      <div className="PokemonCard">
-        <div>
-          <img src={sprites.front_default} alt={name}/>
-          <p>id/{id}</p>
+      <div className="pokemon-card">
+        <div className="pokemon-image-id">
+          <img src={sprites.front_default} alt={name} className="pokemon-picture"/>
+          <p className="pokemon-id">id/{id}</p>
         </div>
-        <div>
-          <p>{name}</p>
-          <ul>
+        <div className="pokemon-info">
+          <p className="pokemon-name">{name}</p>
+          <ul className="type-list">
             {
               types.map(eachType => {
                 return(
-                  <li key={eachType.slot}>
+                  <li key={eachType.slot} className="pokemon-type">
                     {eachType.type.name}
                   </li>
                 );
