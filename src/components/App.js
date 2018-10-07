@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SearchBox from './SearchBox';
 import PokemonList from './PokemonList';
-import './App.css';
+import '../stylesheets/App.css';
 
 class App extends Component {
   constructor(props){
