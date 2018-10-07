@@ -69,13 +69,13 @@ class App extends Component {
       dataToList = filteredByNameData;
     }
     return (
-      <div>
+      <main>
         <SearchBox 
           handleFilterPokemon={this.handleFilterPokemon}
           valueOnSearchBox={valueOnSearchBox}
         />
         <PokemonList data={dataToList}/>
-      </div>
+      </main>
     );
   }
 }

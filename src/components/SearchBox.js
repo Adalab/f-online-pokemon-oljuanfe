@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 class SearchBox extends Component {
   render() {
@@ -6,11 +6,11 @@ class SearchBox extends Component {
       handleFilterPokemon,
       valueOnSearchBox
     } = this.props;
-    console.log('value', valueOnSearchBox);
     return (
-      <Fragment>
+      <div className="search-box">
         <label htmlFor="searchPokemon"></label>
         <input 
+          className="search-input"
           type="text" 
           name="searchPokemon" 
           id="searchPokemon" 
@@ -18,7 +18,7 @@ class SearchBox extends Component {
           value={valueOnSearchBox}
           onChange={handleFilterPokemon}
         />
-      </Fragment>
+      </div>
       
     );
   }

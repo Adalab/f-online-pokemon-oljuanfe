@@ -14,7 +14,7 @@ class PokemonCard extends Component {
       <div className="pokemon-card">
         <div className="pokemon-image-id">
           <img src={sprites.front_default} alt={name} className="pokemon-picture"/>
-          <p className="pokemon-id">id/{id}</p>
+          <p className="pokemon-id">id / {id}</p>
         </div>
         <div className="pokemon-info">
           <p className="pokemon-name">{name}</p>
