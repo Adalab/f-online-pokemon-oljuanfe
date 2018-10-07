@@ -91,3 +91,24 @@ main {
   border: 1px solid grey;
   border-radius: 5px;
 }
+
+@media all and (max-width:1100px) {
+  .pokemon-list {
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    grid-gap: 20px 20px;
+  }
+}
+
+@media all and (max-width:830px) {
+  .pokemon-list {
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+    grid-gap: 20px 20px;
+  }
+}
+
+@media all and (max-width:550px) {
+  .pokemon-list {
+    grid-template-columns: repeat(1, minmax(240px, 1fr));
+    grid-gap: 20px 20px;
+  }
+}
