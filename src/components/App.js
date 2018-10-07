@@ -13,24 +13,26 @@ class App extends Component {
   }
 
   componentDidMount () {
+    let pokemonData = [];
     for(let i = 0; i < 25; i++ ){
-      this.askForPokemons(i);
+      this.askForPokemons(i,pokemonData);
     }
     
   }
 
-  askForPokemons (i) {
+  askForPokemons (i,pokemonData) {
+    
     console.log('pidiendooo');
     let pokemonNumber = i + 1;
-      console.log('pokemonNumber', pokemonNumber);
+    console.log('pokemonNumber', pokemonNumber);
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNumber}/`)
     .then((response) => {
       return response.json();
     })
     .then((json) => {
       console.log('json',json);
-
-      return this.setState({...this.state.data,data: json});
+      pokemonData.push(json);
+      return this.setState({data: [...pokemonData]});
     })
   }
 
