@@ -3,8 +3,8 @@ import { Link} from 'react-router-dom';
 
 class PokemonDetail extends Component {
   render() {
-    console.log('PokemonDetails',this.props);
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+    // console.log('PokemonDetails',this.props);
+    // console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
     return (
       <div >
         Holaaaa!! que tal

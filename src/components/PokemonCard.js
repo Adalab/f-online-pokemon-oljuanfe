@@ -1,15 +1,45 @@
 import React, { Component } from 'react';
 
 class PokemonCard extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      pokemonSpecies: undefined,
+    }
+    this.askForEvolution = this.askForEvolution.bind(this);
+  }
+
+  componentDidMount () {
+    this.askForEvolution ();
+  }
+
+  askForEvolution() {
+    console.log('evolution');
+    console.log('props cardAAAAAAAAAAAA', this.props);
+    const {species} = this.props.pokemonInfo;
+    console.log('url', species.url);
+    fetch(species.url)
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      console.log('json',json);
+      return this.setState({pokemonSpecies: json });
+    })
+  }
+
   render() {
     const {pokemonInfo} = this.props;
     console.log('props pokemoncard', pokemonInfo);
+    console.log('STATE CARD',this.state);
     const {
       id,
       types,
       name,
       sprites
     } = pokemonInfo;
+    // const {evolves_from_species} = this.state.pokemonSpecies;
+    console.log('AQUII',this.state.pokemonSpecies);
     return (
       <div className="pokemon-card">
         <div className="pokemon-image-id">
@@ -29,6 +59,10 @@ class PokemonCard extends Component {
               })
             }
           </ul>
+          <div>
+            <p>Evoluciona de:</p>
+            <p>{(this.state.pokemonSpecies!==undefined)?this.state.pokemonSpecies.evolves_from_species.name:'Este pokemon no tiene evolución'}</p>
+          </div>
         </div>
       </div>
     );

@@ -19,9 +19,10 @@ class App extends Component {
 
   componentDidMount () {
     let pokemonData = [];
-    for(let i = 0; i < 25; i++ ){
-      this.askForPokemons(i,pokemonData);
-    }   
+    // for(let i = 0; i < 25; i++ ){
+    //   this.askForPokemons(i,pokemonData);
+    // }
+    this.askForPokemons(1,pokemonData)
   }
 
   askForPokemons (i,pokemonData) {    
@@ -33,10 +34,10 @@ class App extends Component {
       return response.json();
     })
     .then((json) => {
-      console.log('json',json);
+      // console.log('json',json);
       pokemonData.push(json);
       pokemonData.sort((a,b) => a.id-b.id);
-      console.log('pokedata', pokemonData);
+      // console.log('pokedata', pokemonData);
       return this.setState({data: [...pokemonData]});
     })
   }
@@ -48,7 +49,7 @@ class App extends Component {
       const name = pokemon.name.toLowerCase();
       return name.includes(inputValue);
     });
-    console.log('filteredbyname', filteredByName);
+    // console.log('filteredbyname', filteredByName);
     this.setState(
       {
         filteredByNameData: filteredByName,
@@ -58,7 +59,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('state', this.state);
+    // console.log('state', this.state);
     let dataToList ;
     const{
       data,
