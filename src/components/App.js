@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import SearchBox from './SearchBox';
 import PokemonList from './PokemonList';
+import PokemonDetail from './PokemonDetail';
 import '../stylesheets/App.css';
 
 class App extends Component {
@@ -70,11 +72,36 @@ class App extends Component {
     }
     return (
       <main>
-        <SearchBox 
-          handleFilterPokemon={this.handleFilterPokemon}
-          valueOnSearchBox={valueOnSearchBox}
-        />
-        <PokemonList data={dataToList}/>
+        <Switch>
+          <Route
+            exact
+            path='/'
+            render={
+              (props) => (
+                <Fragment>
+                  <SearchBox
+                    handleFilterPokemon={this.handleFilterPokemon}
+                    valueOnSearchBox={valueOnSearchBox}
+                  />
+                  <PokemonList
+                    data={dataToList}
+                    match={props.match}
+                  />
+                </Fragment>
+              )
+            }
+          />
+          <Route
+            exact
+            path='/pokemon/:id'
+            render={
+              (props) => <PokemonDetail
+                            match={props.match}
+                            pokemonData={dataToList}
+                          />
+            }
+          />
+        </Switch>
       </main>
     );
   }

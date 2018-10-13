@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PokemonCard from './PokemonCard';
+import { Link } from 'react-router-dom';
 
 class PokemonList extends Component {
   render() {
@@ -11,9 +12,13 @@ class PokemonList extends Component {
           {
             data.map(pokemonInfo =>{
               console.log('pokeinfo',pokemonInfo);
+              const {id} = pokemonInfo;
               return (
-                <li key = {pokemonInfo.id} className="pokemon-item-list">
+                <li key = {id} className="pokemon-item-list">
+                <Link to={`/pokemon/${id}`}>
                   <PokemonCard pokemonInfo = {pokemonInfo} />
+                </Link>
+                  
                 </li>
               );
             })
