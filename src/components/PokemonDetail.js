@@ -7,7 +7,7 @@ class PokemonDetail extends Component {
     console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
     return (
       <div >
-        Holaaaa!!
+        Holaaaa!! que tal
         <Link to="/" className="btn-back" >Volver al listado</Link>
       </div>
     );
