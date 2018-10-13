@@ -38,7 +38,6 @@ class PokemonCard extends Component {
       name,
       sprites
     } = pokemonInfo;
-    // const {evolves_from_species} = this.state.pokemonSpecies;
     console.log('AQUII',this.state.pokemonSpecies);
     return (
       <div className="pokemon-card">
@@ -59,9 +58,20 @@ class PokemonCard extends Component {
               })
             }
           </ul>
-          <div>
+          <div className={
+            (this.state.pokemonSpecies!==undefined)
+                ?(this.state.pokemonSpecies.evolves_from_species!==null?"pokemon-evolution":"hidden")
+                :"hidden"
+              }
+          >
             <p>Evoluciona de:</p>
-            <p>{(this.state.pokemonSpecies!==undefined)?this.state.pokemonSpecies.evolves_from_species.name:'Este pokemon no tiene evolución'}</p>
+            <p>
+            {
+              (this.state.pokemonSpecies!==undefined)
+                ?(this.state.pokemonSpecies.evolves_from_species!==null?this.state.pokemonSpecies.evolves_from_species.name:'Este pokemon no tiene evolución')
+                :'Este pokemon no evoluciona de nadie'
+            }
+            </p>
           </div>
         </div>
       </div>

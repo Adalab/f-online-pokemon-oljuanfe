@@ -15,7 +15,7 @@ class PokemonList extends Component {
               const {id} = pokemonInfo;
               return (
                 <li key = {id} className="pokemon-item-list">
-                <Link to={`/pokemon/${id}`}>
+                <Link to={`/pokemon/${id}`} className="link-router">
                   <PokemonCard pokemonInfo = {pokemonInfo} />
                 </Link>
                   
