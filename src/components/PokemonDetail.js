@@ -80,52 +80,81 @@ class PokemonDetail extends Component {
     
     
     return (
-      <div >
-        <div>
-          <img 
-            src={pokemonInfo!==undefined?pokemonInfo.sprites.front_default:'No data'} 
-            alt={pokemonInfo!==undefined?pokemonInfo.name:'No data'}
-          />
-          <img 
-            src={pokemonInfo!==undefined?pokemonInfo.sprites.back_default:'No data'} 
-            alt={pokemonInfo!==undefined?pokemonInfo.name:'No data'}
-          />
-          <p>{pokemonInfo!==undefined?pokemonInfo.name:'No data'}</p>
-          <ul>
-            <li>
-              Altura: {pokemonInfo!==undefined?pokemonInfo.height:'No data'}
-            </li>
-            <li>
-              Peso: {pokemonInfo!==undefined?pokemonInfo.weight:'No data'}
-            </li>
-            <li>
-              Habilidades: 
-              <ul>
-              {pokemonInfo!==undefined
-                ?(pokemonInfo.abilities.map((pokemonAbilities) => {
-                  const {
-                    ability,
-                    slot
-                  } = pokemonAbilities;
-                  return (
-                    <li key={slot}>{ability.name}</li>
-                  );
-                  }))
-                : 'No data'}
-              </ul>
-            </li>
-            <li>
-              Evoluciones:
-              <ul>
-                <li>
-                  {primaryPokemon} evoluciona a {firstPokemonEvolution}
-                </li>
-                <li className={secondPokemonEvolution!==''?'':'hidden'}>
-                  {firstPokemonEvolution} evoluciona a {secondPokemonEvolution}
-                </li>
-              </ul>
-            </li>
-          </ul>
+      <div className="pokemon-detail-wrapper">
+        <div className="pokemon-detail-info-images">
+          <div className="pokemon-detail-images">
+            <img 
+              src={pokemonInfo!==undefined?pokemonInfo.sprites.front_default:'No data'} 
+              alt={pokemonInfo!==undefined?pokemonInfo.name:'No data'}
+              className="pokemon-front"
+            />
+            <img 
+              src={pokemonInfo!==undefined?pokemonInfo.sprites.back_default:'No data'} 
+              alt={pokemonInfo!==undefined?pokemonInfo.name:'No data'}
+              className="pokemon-back"
+            />
+          </div>         
+          <div className="pokemon-detail-info">
+            <p className="pokemon-detail-name">
+              {pokemonInfo!==undefined?pokemonInfo.name:'No data'}
+            </p>
+            <ul className="pokemon-detail-list">
+              <li className="pokemon-detail-item pokemon-detail-height">
+                <p className="pokemon-detail-info-paragraph">
+                  Altura:
+                </p>  
+                <p>
+                  {pokemonInfo!==undefined?pokemonInfo.height:'No data'}
+                </p>
+              </li>
+              <li className="pokemon-detail-item pokemon-detail-weigth">
+                <p className="pokemon-detail-info-paragraph">
+                  Peso:
+                </p>
+                <p>
+                  {pokemonInfo!==undefined?pokemonInfo.weight:'No data'}
+                </p>  
+              </li>
+              <li className="pokemon-detail-item pokemon-detail-abilities">
+                  
+                <ul className="pokemon-detail-abilities-list">
+                  <p className="pokemon-detail-info-paragraph">
+                    Habilidades:
+                  </p>
+                  {pokemonInfo!==undefined
+                    ?(pokemonInfo.abilities.map((pokemonAbilities) => {
+                      const {
+                        ability,
+                        slot
+                      } = pokemonAbilities;
+                      return (
+                        <li 
+                          key={slot} 
+                          className="pokemon-detail-abilities-item"
+                        >
+                          {ability.name}
+                        </li>
+                      );
+                      }))
+                    : 'No data'}
+                </ul>
+              </li>
+              <li className="pokemon-detail-item pokemon-detail-evolutions"> 
+                <ul className="pokemon-detail-evolutions-list">
+                  <p className="pokemon-detail-info-paragraph">
+                    Evoluciones:
+                  </p>
+                  <li>
+                    {primaryPokemon} &#10153; {firstPokemonEvolution}
+                  </li>
+                  <li className={secondPokemonEvolution!==''?'':'hidden'}>
+                    {firstPokemonEvolution} &#10153; {secondPokemonEvolution}
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          
         </div>
         <Link 
           to="/" 

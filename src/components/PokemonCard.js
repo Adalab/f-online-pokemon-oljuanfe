@@ -64,8 +64,8 @@ class PokemonCard extends Component {
                 :"hidden"
               }
           >
-            <p>Evoluciona de:</p>
-            <p>
+            <p className="evolution-first-paragraph">Evoluciona de:</p>
+            <p className="evolution-second-paragraph">
             {
               (this.state.pokemonSpecies!==undefined)
                 ?(this.state.pokemonSpecies.evolves_from_species!==null?this.state.pokemonSpecies.evolves_from_species.name:'Este pokemon no tiene evolución')
