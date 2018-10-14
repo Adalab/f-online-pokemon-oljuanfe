@@ -22,22 +22,17 @@ class App extends Component {
     for(let i = 0; i < 25; i++ ){
       this.askForPokemons(i,pokemonData);
     }
-    // this.askForPokemons(1,pokemonData);
   }
 
   askForPokemons (i,pokemonData) {    
-    console.log('pidiendooo');
     let pokemonNumber = i + 1;
-    console.log('pokemonNumber', pokemonNumber);
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNumber}/`)
     .then((response) => {
       return response.json();
     })
     .then((json) => {
-      // console.log('json',json);
       pokemonData.push(json);
       pokemonData.sort((a,b) => a.id-b.id);
-      // console.log('pokedata', pokemonData);
       return this.setState({data: [...pokemonData]});
     })
   }
@@ -49,7 +44,6 @@ class App extends Component {
       const name = pokemon.name.toLowerCase();
       return name.includes(inputValue);
     });
-    // console.log('filteredbyname', filteredByName);
     this.setState(
       {
         filteredByNameData: filteredByName,
@@ -59,7 +53,6 @@ class App extends Component {
   }
 
   render() {
-    // console.log('state', this.state);
     let dataToList ;
     const{
       data,
@@ -72,7 +65,10 @@ class App extends Component {
       dataToList = filteredByNameData;
     }
     return (
-      <main>
+      <div>
+        <header className="header">
+        </header>
+        <main>
         <Switch>
           <Route
             exact
@@ -104,6 +100,9 @@ class App extends Component {
           />
         </Switch>
       </main>
+      <footer className="footer"></footer>
+      </div>
+      
     );
   }
 }

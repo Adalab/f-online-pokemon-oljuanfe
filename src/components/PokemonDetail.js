@@ -13,29 +13,23 @@ class PokemonDetail extends Component {
   }
 
   askPokemonSpecies (urlSpecies) {
-    console.log('EVOLUTION');
-    console.log(urlSpecies);
     fetch(urlSpecies)
     .then((response) => {
       return response.json();
     })
-    .then((json) => { 
-      console.log(json);
+    .then((json) => {
       return (this.setState({pokemonSpecies: json }), this.askPokemonEvolutionChain());
     })
   }
 
   askPokemonEvolutionChain() {
-    console.log('EVOLUTION2');
     if (this.state.pokemonSpecies!==undefined){
       let urlEvolutionChain = this.state.pokemonSpecies.evolution_chain.url;
-      console.log('evolution url',urlEvolutionChain);
       fetch(urlEvolutionChain)
       .then((response) => {
         return response.json();
       })
-      .then((json) => { 
-        console.log(json);
+      .then((json) => {
         return (
           this.setState({pokemonEvolutionChain: json })
         );
@@ -44,8 +38,6 @@ class PokemonDetail extends Component {
   }
 
   render() {
-    console.log('PokemonDetails',this.props);
-    console.log('STATE DETAIL', this.state);
     const{
       match,
       pokemonData,
@@ -71,9 +63,7 @@ class PokemonDetail extends Component {
     let pokemonChosen = pokemonData.filter((pokemon) => {
       return pokemon.id === pokemonId;
     });
-    console.log('pokemonchosen',pokemonChosen);
     let pokemonInfo = pokemonChosen[0];
-    console.log('pokemonInfo', pokemonInfo);
     if (pokemonInfo !== undefined && this.state.pokemonSpecies === undefined) {
       this.askPokemonSpecies(pokemonInfo.species.url);
     }
