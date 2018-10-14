@@ -82,7 +82,14 @@ class PokemonDetail extends Component {
     return (
       <div >
         <div>
-          <img src="" alt=""/>
+          <img 
+            src={pokemonInfo!==undefined?pokemonInfo.sprites.front_default:'No data'} 
+            alt={pokemonInfo!==undefined?pokemonInfo.name:'No data'}
+          />
+          <img 
+            src={pokemonInfo!==undefined?pokemonInfo.sprites.back_default:'No data'} 
+            alt={pokemonInfo!==undefined?pokemonInfo.name:'No data'}
+          />
           <p>{pokemonInfo!==undefined?pokemonInfo.name:'No data'}</p>
           <ul>
             <li>
@@ -116,8 +123,6 @@ class PokemonDetail extends Component {
                 <li className={secondPokemonEvolution!==''?'':'hidden'}>
                   {firstPokemonEvolution} evoluciona a {secondPokemonEvolution}
                 </li>
-
-                
               </ul>
             </li>
           </ul>
