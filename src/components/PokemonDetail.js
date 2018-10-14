@@ -28,11 +28,19 @@ class PokemonDetail extends Component {
   askPokemonEvolutionChain() {
     console.log('EVOLUTION2');
     if (this.state.pokemonSpecies!==undefined){
-      let urlEvolutionChain = this.state.pokemonSpecies.evolution_chain;
+      let urlEvolutionChain = this.state.pokemonSpecies.evolution_chain.url;
       console.log('evolution url',urlEvolutionChain);
+      fetch(urlEvolutionChain)
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => { 
+        console.log(json);
+        return (
+          this.setState({pokemonEvolutionChain: json })
+        );
+      })
     }
-    
-
   }
 
   render() {
@@ -43,8 +51,22 @@ class PokemonDetail extends Component {
       pokemonData,
     } = this.props;
     const {pokemonEvolutionChain} = this.state;
+    let primaryPokemon= '' ;
+    let firstPokemonEvolution = '' ;
+    let secondPokemonEvolution = '' ;
+    if (pokemonEvolutionChain !== undefined ) {
+      const {
+        evolves_to,
+        species,
+      } = pokemonEvolutionChain.chain;
+      primaryPokemon = species.name;
+      firstPokemonEvolution = evolves_to[0].species.name;
+      if (evolves_to[0].evolves_to.length > 0){
+        secondPokemonEvolution = evolves_to[0].evolves_to[0].species.name;
+      }
+      
+    }
     const {params} = match;
-    
     const pokemonId = parseInt(params.id);
     let pokemonChosen = pokemonData.filter((pokemon) => {
       return pokemon.id === pokemonId;
@@ -52,7 +74,7 @@ class PokemonDetail extends Component {
     console.log('pokemonchosen',pokemonChosen);
     let pokemonInfo = pokemonChosen[0];
     console.log('pokemonInfo', pokemonInfo);
-    if (pokemonInfo!==undefined&&this.state.pokemonSpecies===undefined) {
+    if (pokemonInfo !== undefined && this.state.pokemonSpecies === undefined) {
       this.askPokemonSpecies(pokemonInfo.species.url);
     }
     
@@ -88,9 +110,14 @@ class PokemonDetail extends Component {
             <li>
               Evoluciones:
               <ul>
-                {
+                <li>
+                  {primaryPokemon} evoluciona a {firstPokemonEvolution}
+                </li>
+                <li className={secondPokemonEvolution!==''?'':'hidden'}>
+                  {firstPokemonEvolution} evoluciona a {secondPokemonEvolution}
+                </li>
 
-                }
+                
               </ul>
             </li>
           </ul>

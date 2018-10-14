@@ -19,10 +19,10 @@ class App extends Component {
 
   componentDidMount () {
     let pokemonData = [];
-    // for(let i = 0; i < 25; i++ ){
-    //   this.askForPokemons(i,pokemonData);
-    // }
-    this.askForPokemons(1,pokemonData);
+    for(let i = 0; i < 25; i++ ){
+      this.askForPokemons(i,pokemonData);
+    }
+    // this.askForPokemons(1,pokemonData);
   }
 
   askForPokemons (i,pokemonData) {    
