@@ -14,31 +14,24 @@ class PokemonCard extends Component {
   }
 
   askForEvolution() {
-    console.log('evolution');
-    console.log('props cardAAAAAAAAAAAA', this.props);
     const {species} = this.props.pokemonInfo;
-    console.log('url', species.url);
     fetch(species.url)
     .then((response) => {
       return response.json();
     })
     .then((json) => {
-      console.log('json',json);
       return this.setState({pokemonSpecies: json });
     })
   }
 
   render() {
     const {pokemonInfo} = this.props;
-    console.log('props pokemoncard', pokemonInfo);
-    console.log('STATE CARD',this.state);
     const {
       id,
       types,
       name,
       sprites
     } = pokemonInfo;
-    console.log('AQUII',this.state.pokemonSpecies);
     return (
       <div className="pokemon-card">
         <div className="pokemon-image-id">
